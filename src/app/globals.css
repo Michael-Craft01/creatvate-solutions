@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  /* "navy" tokens are remapped to a warm near-black scale (black + white theme) */
+  --color-navy-950: #0a0a0a;
+  --color-navy-900: #141414;
+  --color-navy-800: #242424;
+  --color-navy-700: #343434;
+  /* "brand" tokens are the orange accent */
+  --color-brand-50: #fff5ee;
+  --color-brand-100: #ffe6d4;
+  --color-brand-300: #ffb27a;
+  --color-brand-400: #ff8c42;
+  --color-brand-500: #f26a1b;
+  --color-brand-600: #e2550c;
+  --color-brand-700: #b8420a;
+  --color-accent-400: #f59e0b;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-stone-600 antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-navy-900 tracking-tight;
+  }
+  ::selection {
+    @apply bg-brand-500 text-white;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200;
+}
+@utility btn-primary {
+  @apply btn bg-brand-500 text-white shadow-lg shadow-brand-500/30 hover:-translate-y-0.5 hover:bg-brand-600;
+}
+@utility btn-secondary {
+  @apply btn border border-white/25 text-white hover:bg-white/10;
+}
+@utility btn-dark {
+  @apply btn bg-navy-900 text-white hover:-translate-y-0.5 hover:bg-navy-800;
+}
+@utility btn-outline {
+  @apply btn border border-stone-300 text-navy-900 hover:border-navy-900 hover:bg-navy-900 hover:text-white;
+}
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-brand-600 uppercase;
+}
+@utility card {
+  @apply rounded-3xl border border-stone-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-navy-900 hover:shadow-[0_24px_50px_-20px_rgba(0,0,0,0.3)];
+}
+@utility grid-bg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 54px 54px;
+}
+
+/* Robot hero */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+.robot-float { animation: floaty 6s ease-in-out infinite; transform-origin: center; }
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.robot-bounce { animation: bob 3.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .robot-float, .robot-bounce { animation: none; }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 32s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Multi-step form transitions */
+@keyframes stepIn {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: none; }
+}
+.step-enter { animation: stepIn 0.38s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (prefers-reduced-motion: reduce) {
+  .step-enter { animation: none; }
+}
+
+/* Site-wide scroll background */
+@keyframes orbDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(26px, -20px) scale(1.08); }
+}
+.orb-drift { animation: orbDrift 20s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .orb-drift { animation: none; }
+}
