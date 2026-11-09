@@ -48,7 +48,7 @@ export function organizationJsonLd() {
     description: siteConfig.description,
     slogan: siteConfig.tagline,
     foundingDate: siteConfig.foundingYear,
-    email: contact.email,
+    email: contact.email || undefined,
     telephone: contact.phone,
     address: {
       "@type": "PostalAddress",

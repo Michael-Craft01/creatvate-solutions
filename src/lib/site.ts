@@ -15,9 +15,9 @@ export const siteConfig = {
   locale: "en_US",
   foundingYear: "2024", // TODO: confirm
   contact: {
-    email: "info@creatvatesolutions.com", // TODO
+    email: "", // Email removed — enquiries come via WhatsApp.
     phone: "+263 78 403 0449",
-    whatsapp: "263784030449",
+    whatsapp: "26719200295", // enquiries / "WhatsApp us" go here (digits only)
     address: {
       street: "9 Alice Lane, Avondale",
       city: "Harare",
@@ -287,7 +287,7 @@ export const joinPlans = [
   {
     name: "Starter",
     tagline: "For small businesses finding their feet online.",
-    features: ["Social media management", "Brand & profile setup", "Monthly reporting", "Email & WhatsApp support"],
+    features: ["Social media management", "Brand & profile setup", "Monthly reporting", "WhatsApp support"],
     cta: "Start small",
     featured: false,
   },

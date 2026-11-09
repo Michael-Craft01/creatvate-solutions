@@ -17,7 +17,9 @@ export default function ContactPage() {
   const address = `${contact.address.street}, ${contact.address.city}, ${contact.address.country}`;
   const items = [
     { icon: "phone" as const, label: "Phone", value: contact.phone, href: `tel:${contact.phone.replace(/\s/g, "")}` },
-    { icon: "mail" as const, label: "Email", value: contact.email, href: `mailto:${contact.email}` },
+    ...(contact.whatsapp
+      ? [{ icon: "chat" as const, label: "WhatsApp", value: "WhatsApp us", href: `https://wa.me/${contact.whatsapp}` }]
+      : []),
     { icon: "pin" as const, label: "Office", value: address },
     { icon: "clock" as const, label: "Hours", value: contact.hours },
   ];

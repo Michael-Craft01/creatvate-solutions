@@ -1,4 +1,5 @@
-const paths: Record<"strategy" | "transform" | "code" | "megaphone" | "palette" | "chart" | "clipboard" | "graduation" | "bot" | "check" | "arrow" | "phone" | "mail" | "pin" | "clock" | "menu" | "close" | "spark", React.ReactNode> = {
+const paths: Record<"strategy" | "transform" | "code" | "megaphone" | "palette" | "chart" | "clipboard" | "graduation" | "bot" | "check" | "arrow" | "phone" | "mail" | "pin" | "clock" | "menu" | "close" | "spark" | "chat", React.ReactNode> = {
+  chat: <><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5Z" /><path d="M8.5 12h.01M12 12h.01M15.5 12h.01" /></>,
   strategy: <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1" /></>,
   transform: <><path d="M4 4v6h6" /><path d="M20 20v-6h-6" /><path d="M20 9a8 8 0 0 0-14.3-3.3L4 10" /><path d="M4 15a8 8 0 0 0 14.3 3.3L20 14" /></>,
   code: <><path d="m8 7-5 5 5 5" /><path d="m16 7 5 5-5 5" /><path d="m14 4-4 16" /></>,

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { services } from "@/lib/site";
+import { services, siteConfig } from "@/lib/site";
 import Icon from "./Icon";
 
 type FieldType = "text" | "email" | "tel" | "textarea" | "select";
@@ -17,7 +17,7 @@ type Step = {
 
 const steps: Step[] = [
   { name: "name", type: "text", label: "What's your name?", hint: "So we know who we're talking to.", placeholder: "Jane Doe", required: true, autoComplete: "name" },
-  { name: "email", type: "email", label: "What's your email?", hint: "We'll reply here within 24 hours.", placeholder: "jane@company.com", required: true, autoComplete: "email" },
+  { name: "email", type: "email", label: "What's your email?", hint: "Optional — so we can follow up if needed.", placeholder: "jane@company.com", autoComplete: "email" },
   { name: "phone", type: "tel", label: "Your phone number?", hint: "Optional — handy if you'd prefer a call or WhatsApp.", placeholder: "+263 ...", autoComplete: "tel" },
   { name: "company", type: "text", label: "Your company?", hint: "Optional — tell us where you work.", placeholder: "Company name", autoComplete: "organization" },
   { name: "service", type: "select", label: "What can we help with?", hint: "Pick the area closest to your needs." },
@@ -65,24 +65,27 @@ export default function ContactForm() {
     if (step > 0) setStep((s) => s - 1);
   }
 
-  async function submit() {
+  function submit() {
     const err = validate();
     if (err) return setError(err);
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Something went wrong.");
-      setStatus("success");
-      setMessage("Thank you! Your message is on its way. We'll be in touch within 24 hours.");
-    } catch (e) {
-      setStatus("error");
-      setMessage(e instanceof Error ? e.message : "Something went wrong. Please try again.");
-    }
+
+    // Send the enquiry straight to our WhatsApp as a pre-filled message.
+    const lines = [
+      "Hi CreatVate, I'd like to get in touch.",
+      "",
+      `Name: ${values.name || "-"}`,
+      values.email ? `Email: ${values.email}` : "",
+      values.phone ? `Phone: ${values.phone}` : "",
+      values.company ? `Company: ${values.company}` : "",
+      `Interested in: ${values.service || "Not sure yet"}`,
+      "",
+      values.message || "",
+    ].filter(Boolean);
+
+    const url = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    setStatus("success");
+    setMessage("WhatsApp is opening with your message — just tap send to reach us.");
   }
 
   function onKeyDown(e: React.KeyboardEvent) {
@@ -99,10 +102,20 @@ export default function ContactForm() {
     return (
       <div className="flex min-h-[360px] flex-col items-center justify-center text-center">
         <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-500 text-white">
-          <Icon name="check" className="h-8 w-8" />
+          <Icon name="chat" className="h-8 w-8" />
         </span>
-        <h3 className="mt-6 text-2xl font-bold">Message sent!</h3>
+        <h3 className="mt-6 text-2xl font-bold">Opening WhatsApp…</h3>
         <p className="mt-2 max-w-sm text-stone-600">{message}</p>
+        {siteConfig.contact.whatsapp && (
+          <a
+            href={`https://wa.me/${siteConfig.contact.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary mt-6"
+          >
+            Open WhatsApp manually <Icon name="arrow" className="h-4 w-4" />
+          </a>
+        )}
       </div>
     );
   }
@@ -207,8 +220,8 @@ export default function ContactForm() {
         </button>
 
         {isLast ? (
-          <button type="button" onClick={submit} disabled={status === "sending"} className="btn-primary disabled:opacity-60">
-            {status === "sending" ? "Sending..." : "Send message"} <Icon name="arrow" className="h-4 w-4" />
+          <button type="button" onClick={submit} className="btn-primary">
+            Send on WhatsApp <Icon name="chat" className="h-4 w-4" />
           </button>
         ) : (
           <button type="button" onClick={next} className="btn-dark">

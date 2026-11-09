@@ -25,8 +25,11 @@ export default function PrivacyPage() {
           <p>We keep your information only as long as necessary and protect it using appropriate technical and organisational measures.</p>
           <h2>Your rights</h2>
           <p>
-            You may request access to, correction of, or deletion of your personal data at any time by emailing{" "}
-            <a href={`mailto:${siteConfig.contact.email}`} className="text-brand-700 underline">{siteConfig.contact.email}</a>.
+            You may request access to, correction of, or deletion of your personal data at any time by{" "}
+            <a href={`https://wa.me/${siteConfig.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-brand-700 underline">
+              messaging us on WhatsApp
+            </a>{" "}
+            or through our <a href="/contact" className="text-brand-700 underline">contact page</a>.
           </p>
         </div>
       </section>

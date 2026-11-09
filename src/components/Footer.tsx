@@ -71,12 +71,14 @@ export default function Footer() {
                 {contact.phone}
               </a>
             </p>
-            <p className="flex gap-3">
-              <Icon name="mail" className="h-5 w-5 shrink-0 text-brand-400" />
-              <a href={`mailto:${contact.email}`} className="hover:text-white">
-                {contact.email}
-              </a>
-            </p>
+            {contact.whatsapp && (
+              <p className="flex gap-3">
+                <Icon name="chat" className="h-5 w-5 shrink-0 text-brand-400" />
+                <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  WhatsApp us
+                </a>
+              </p>
+            )}
             <p className="flex gap-3">
               <Icon name="clock" className="h-5 w-5 shrink-0 text-brand-400" />
               <span>{contact.hours}</span>
