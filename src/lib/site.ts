@@ -6,7 +6,7 @@
 
 export const siteConfig = {
   name: "CreatVate Solutions",
-  legalName: "CreatVate Solutions Consultancy",
+  legalName: "CreatVate Solutions Consultancy Firm",
   shortName: "CreatVate",
   tagline: "Creating value through innovation",
   description:
@@ -19,16 +19,17 @@ export const siteConfig = {
     phone: "+263 78 403 0449",
     whatsapp: "263784030449",
     address: {
-      street: "123 Business Avenue", // TODO
-      city: "Your City", // TODO
+      street: "9 Alice Lane, Avondale",
+      city: "Harare",
       region: "",
       postalCode: "",
-      country: "Zimbabwe", // TODO: confirm full address
+      country: "Zimbabwe",
     },
     hours: "Mon – Fri, 8:00 – 17:00",
   },
   social: {
-    linkedin: "https://www.linkedin.com/company/creatvate-solutions", // TODO
+    // TODO: paste your real profile URLs; empty links are simply hidden.
+    linkedin: "",
     facebook: "",
     instagram: "",
     x: "",
@@ -209,13 +210,6 @@ export const stats = [
   { value: "100%", label: "Client-focused delivery" },
   { value: "24h", label: "Response time" },
   { value: "360°", label: "End-to-end solutions" },
-];
-
-// TODO: replace with real client testimonials (with permission)
-export const testimonials = [
-  { quote: "Since CreatVate took over our social media, our engagement and enquiries have grown every month. Professional and consistent.", name: "Client Name", role: "Managing Director, SME" },
-  { quote: "They studied how we work, then automated processes that used to take us days. The training made adoption easy for our staff.", name: "Client Name", role: "Operations Manager" },
-  { quote: "The custom system they built fits our business perfectly. No more spreadsheets and workarounds.", name: "Client Name", role: "Founder, Retail Brand" },
 ];
 
 // Brands we've worked with (real clients)
