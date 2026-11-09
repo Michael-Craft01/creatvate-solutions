@@ -40,7 +40,7 @@ export default function ContactPage() {
       />
 
       <section className="py-20 md:py-28">
-        <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.5fr]">
+        <div className="container-x grid items-start gap-10 lg:grid-cols-[1fr_minmax(0,440px)] lg:gap-16">
           <div>
             <h2 className="text-2xl font-bold">Get in touch</h2>
             <p className="mt-3 text-stone-600">Prefer to talk? Reach us directly using the details below.</p>
@@ -79,9 +79,9 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-stone-200 bg-white p-6 shadow-xl shadow-navy-900/5 md:p-10">
-            <h2 className="text-2xl font-bold">Request a free consultation</h2>
-            <p className="mt-2 text-stone-600">Fields marked * are required.</p>
+          <div className="w-full rounded-2xl border border-stone-200 bg-white p-5 shadow-lg shadow-navy-900/5 sm:p-6 lg:sticky lg:top-24">
+            <h2 className="text-lg font-bold">Request a free consultation</h2>
+            <p className="mt-1 text-sm text-stone-500">Takes about a minute. Sent straight to our WhatsApp.</p>
             <ContactForm />
           </div>
         </div>

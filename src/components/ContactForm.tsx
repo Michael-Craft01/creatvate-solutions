@@ -96,11 +96,11 @@ export default function ContactForm() {
   }
 
   const field =
-    "mt-4 w-full rounded-xl border border-stone-300 bg-white px-4 py-3.5 text-lg text-navy-900 placeholder:text-stone-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20";
+    "mt-3 w-full rounded-lg border border-stone-300 bg-white px-3.5 py-2.5 text-base text-navy-900 placeholder:text-stone-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20";
 
   if (status === "success") {
     return (
-      <div className="flex min-h-[360px] flex-col items-center justify-center text-center">
+      <div className="flex min-h-[260px] flex-col items-center justify-center py-6 text-center">
         <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-500 text-white">
           <Icon name="chat" className="h-8 w-8" />
         </span>
@@ -121,30 +121,30 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="flex min-h-[380px] flex-col">
+    <div className="mt-5 flex flex-col">
       {/* progress */}
-      <div className="flex items-center justify-between text-sm font-medium text-stone-500">
+      <div className="flex items-center justify-between text-xs font-medium text-stone-500">
         <span>
           Question {step + 1} of {steps.length}
         </span>
         <span>{progress}%</span>
       </div>
-      <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-stone-200">
+      <div className="mt-1.5 h-1 w-full overflow-hidden rounded-full bg-stone-200">
         <div className="h-full rounded-full bg-brand-500 transition-all duration-500" style={{ width: `${progress}%` }} />
       </div>
 
       {/* the card for the current question */}
-      <div key={step} className="step-enter mt-8 flex-1" onKeyDown={onKeyDown}>
-        <label htmlFor={current.name} className="font-display text-2xl font-bold text-navy-900 md:text-3xl">
+      <div key={step} className="step-enter mt-5" onKeyDown={onKeyDown}>
+        <label htmlFor={current.name} className="font-display text-lg font-bold text-navy-900">
           {current.label} {current.required && <span className="text-brand-500">*</span>}
         </label>
-        <p className="mt-2 text-stone-500">{current.hint}</p>
+        <p className="mt-1 text-sm text-stone-500">{current.hint}</p>
 
         {current.type === "textarea" ? (
           <textarea
             id={current.name}
             name={current.name}
-            rows={5}
+            rows={4}
             autoFocus
             value={values[current.name] || ""}
             onChange={(e) => setVal(e.target.value)}
@@ -152,7 +152,7 @@ export default function ContactForm() {
             className={field}
           />
         ) : current.type === "select" ? (
-          <div role="radiogroup" aria-label={current.label} className="mt-5 grid gap-3 sm:grid-cols-2">
+          <div role="radiogroup" aria-label={current.label} className="mt-3 grid gap-2">
             {[{ title: "Not sure yet", icon: "spark" as const }, ...services].map((opt) => {
               const selected = (values[current.name] || "") === opt.title;
               return (
@@ -162,14 +162,14 @@ export default function ContactForm() {
                   role="radio"
                   aria-checked={selected}
                   onClick={() => choose(opt.title)}
-                  className={`group flex items-center gap-3 rounded-2xl border px-4 py-4 text-left transition-all duration-200 ${
+                  className={`group flex items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-all duration-200 ${
                     selected
                       ? "border-brand-500 bg-brand-50 shadow-sm"
                       : "border-stone-200 bg-white hover:-translate-y-0.5 hover:border-navy-900 hover:shadow-md"
                   }`}
                 >
                   <span
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors ${
                       selected ? "bg-brand-500 text-white" : "bg-stone-100 text-navy-900 group-hover:bg-navy-900 group-hover:text-white"
                     }`}
                   >
@@ -209,7 +209,7 @@ export default function ContactForm() {
       </div>
 
       {/* controls */}
-      <div className="mt-8 flex items-center justify-between gap-3">
+      <div className="mt-5 flex items-center justify-between gap-3">
         <button
           type="button"
           onClick={back}
@@ -235,7 +235,7 @@ export default function ContactForm() {
           {message}
         </p>
       )}
-      <p className="mt-4 text-center text-xs text-stone-400">Press Enter to continue</p>
+      <p className="mt-3 hidden text-center text-xs text-stone-400 sm:block">Press Enter ↵ to continue</p>
     </div>
   );
 }

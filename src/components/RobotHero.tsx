@@ -22,20 +22,21 @@ export default function RobotHero() {
         <GlassCard className="right-[2%] top-[48%] max-w-[220px]" icon="transform" title="Solutions, anytime." text="One team across every channel." stacked />
 
         {/* trusted by (bottom-left) */}
-        <div className="absolute bottom-7 left-7 z-10 hidden lg:block">
-          <p className="text-sm text-stone-500">Trusted by growing businesses.</p>
-          <div className="mt-2 flex items-center">
-            {clients.map((c, i) => (
-              <span
-                key={c.name}
-                title={c.name}
-                className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#faf8f4] bg-navy-900 font-display text-[11px] font-bold text-brand-400 ${i > 0 ? "-ml-2.5" : ""}`}
-              >
-                {c.name.replace(/[^A-Za-z ]/g, "").split(" ").filter(Boolean).slice(0, 2).map((w) => w[0]).join("")}
-              </span>
+        <div className="absolute bottom-7 left-7 z-10 hidden max-w-[190px] xl:block">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-400">Trusted by</p>
+          <ul className="mt-2.5 space-y-2">
+            {clients.map((c) => (
+              <li key={c.name} className="flex items-center gap-2.5">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-navy-900 text-brand-400">
+                  <Icon name="check" className="h-3.5 w-3.5" />
+                </span>
+                <span className="leading-tight">
+                  <span className="block text-sm font-semibold text-navy-900">{c.name}</span>
+                  <span className="block text-[11px] text-stone-500">{c.service}</span>
+                </span>
+              </li>
             ))}
-            <span className="-ml-2.5 flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#faf8f4] bg-stone-200 text-sm font-bold text-stone-600">+</span>
-          </div>
+          </ul>
         </div>
 
         {/* accent (bottom-right) */}
@@ -77,7 +78,7 @@ export default function RobotHero() {
         </div>
 
         {/* four pillars */}
-        <div className="relative z-10 mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-4 px-6 pb-14 sm:grid-cols-4 lg:mt-16">
+        <div className="relative z-10 mx-auto mt-12 grid max-w-2xl grid-cols-2 gap-4 px-6 pb-14 sm:grid-cols-4 lg:mt-16">
           {pillars.map((p) => (
             <div
               key={p.label}
@@ -138,11 +139,15 @@ function GlassCard({
   return (
     <div className={`absolute z-20 hidden rounded-2xl border border-stone-200 bg-white/70 p-4 shadow-xl shadow-navy-900/5 backdrop-blur lg:block ${className}`}>
       {stacked ? (
-        <div className="mb-3 flex items-center">
-          {["#1f2937", "#9a3412", "#0f766e"].map((c, i) => (
-            <span key={i} className={`h-7 w-7 rounded-full border-2 border-white ${i > 0 ? "-ml-2" : ""}`} style={{ background: c }} />
+        <div className="mb-3 flex items-center gap-1.5">
+          {(["megaphone", "bot", "code", "graduation"] as AnyIcon[]).map((ic, i) => (
+            <span
+              key={ic}
+              className={`flex h-7 w-7 items-center justify-center rounded-lg ${i === 1 ? "bg-brand-500 text-white" : "bg-navy-900 text-white"}`}
+            >
+              <Icon name={ic} className="h-3.5 w-3.5" />
+            </span>
           ))}
-          <span className="-ml-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-stone-200 text-xs font-bold text-stone-600">+</span>
         </div>
       ) : (
         <span className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
@@ -151,6 +156,15 @@ function GlassCard({
       )}
       <p className="font-display text-sm font-bold text-navy-900">{title}</p>
       <p className="mt-1 text-xs leading-relaxed text-stone-500">{text}</p>
+      {stacked && (
+        <p className="mt-3 flex items-center gap-1.5 border-t border-stone-200 pt-2.5 text-[11px] font-medium text-stone-600">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+          </span>
+          Replies on WhatsApp within 24h
+        </p>
+      )}
     </div>
   );
 }
