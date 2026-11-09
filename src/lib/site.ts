@@ -74,26 +74,30 @@ export const services: Service[] = [
     slug: "digital-growth-social-media-management",
     title: "Digital Growth",
     short:
-      "Social media management that grows your audience, builds your brand and turns followers into customers.",
+      "Social media, search and WhatsApp marketing that grows your audience and turns attention into paying customers.",
     image: "/images/social-media.jpg",
     icon: "megaphone",
-    metaTitle: "Digital Growth: Social Media Management Services",
+    metaTitle: "Digital Growth: Social Media, SEO & WhatsApp Marketing",
     metaDescription:
-      "Professional social media management: strategy, content creation, scheduling, community management, paid social ads and monthly analytics to grow your business online.",
+      "Digital growth services: social media management, content and paid ads, local SEO and Google Business Profile, WhatsApp Business and email marketing, and influencer campaigns.",
     intro:
-      "Your customers are on social media every day. We manage your social presence from start to finish, so your brand shows up consistently, engages the right people and generates real enquiries while you focus on running the business.",
+      "Your customers are online every day: scrolling social media, searching Google and chatting on WhatsApp. We make sure your business shows up in all three places, consistently and professionally, and turn that attention into real enquiries while you focus on running the business.",
     offerings: [
       { title: "Social media strategy", text: "A clear plan for your platforms, audience, content pillars, posting rhythm and goals." },
       { title: "Content creation & scheduling", text: "On-brand graphics, short-form video, captions and a content calendar, published on time every time." },
       { title: "Community management", text: "We respond to comments and messages promptly so your audience feels heard and leads aren't missed." },
       { title: "Paid social advertising", text: "Targeted Facebook, Instagram, LinkedIn and TikTok ad campaigns optimised for leads and sales." },
+      { title: "Search & Google Business Profile", text: "Local SEO, a fully optimised Google Maps listing and review management, so customers find you when they search 'near me'." },
+      { title: "WhatsApp Business & email marketing", text: "Catalogues, broadcast lists, quick replies and newsletters that turn one-time buyers into repeat customers." },
+      { title: "Influencer & creator partnerships", text: "We find the right local creators, run the campaigns and collect user-generated content that builds trust fast." },
       { title: "Analytics & reporting", text: "Monthly reports on reach, engagement, followers and leads, with clear recommendations." },
       { title: "Profile setup & optimisation", text: "Professional, search-friendly profiles across every platform that matters to your business." },
     ],
-    outcomes: ["A consistent, professional brand online", "A growing, engaged audience", "More enquiries from social media", "Clear monthly results you can measure"],
+    outcomes: ["A consistent, professional brand online", "Found on Google, social media and WhatsApp", "More enquiries and repeat customers", "Clear monthly results you can measure"],
     faqs: [
       { q: "Which social media platforms do you manage?", a: "We manage Facebook, Instagram, LinkedIn, TikTok, X and YouTube. We recommend the platforms where your customers actually spend time." },
       { q: "Do you create the content as well?", a: "Yes. Our team handles strategy, design, video, copywriting and scheduling. You approve the content calendar and we take care of the rest." },
+      { q: "Can you help us show up on Google?", a: "Yes. We set up and optimise your Google Business Profile, improve your local search ranking and help you collect and respond to reviews." },
       { q: "How soon will we see results?", a: "Engagement usually improves within the first month. Steady audience and lead growth builds over 3 to 6 months of consistent activity." },
     ],
   },
@@ -216,6 +220,15 @@ export const stats = [
 export const clients = [
   { name: "TheGrillGarden", service: "Social Media Management" },
   { name: "Focus Research Consultancy", service: "Digital Growth & AI Automation" },
+];
+
+// Logos for the "Brands we've worked with" carousel (files in /public/clients)
+export const clientLogos = [
+  { src: "/clients/grill-garden.png", name: "The Grill Garden", width: 800, height: 546 },
+  { src: "/clients/focus-research.png", name: "Focus Research and Consulting", width: 800, height: 467 },
+  { src: "/clients/good-taste.png", name: "Good Taste", width: 800, height: 694 },
+  { src: "/clients/client-3.png", name: "Partner brand", width: 426, height: 377 },
+  { src: "/clients/client-2.png", name: "Partner brand", width: 64, height: 56 },
 ];
 
 // How we charge

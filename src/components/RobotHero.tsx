@@ -3,7 +3,7 @@ import { clients, siteConfig } from "@/lib/site";
 import Icon, { type AnyIcon } from "./Icon";
 
 const pillars: { icon: AnyIcon; label: string; text: string }[] = [
-  { icon: "megaphone", label: "Grow", text: "Social media that sells." },
+  { icon: "megaphone", label: "Grow", text: "Social, search & WhatsApp." },
   { icon: "bot", label: "Automate", text: "AI does the busywork." },
   { icon: "code", label: "Build", text: "Software that fits you." },
   { icon: "graduation", label: "Train", text: "Future-ready teams." },

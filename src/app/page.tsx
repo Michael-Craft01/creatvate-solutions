@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import Icon from "@/components/Icon";
 import Reveal from "@/components/Reveal";
 import Stats from "@/components/Stats";
-import { ClientsBand, CtaSection, EventsSection, FaqSection, PhotoStrip, ProcessSection, SectionHeading, ServicesGrid, VideoBand } from "@/components/Sections";
+import { CtaSection, EventsSection, FaqSection, PhotoStrip, ProcessSection, SectionHeading, ServicesGrid, StandOut, VideoBand } from "@/components/Sections";
 import RobotHero from "@/components/RobotHero";
 
 export default function HomePage() {
@@ -16,6 +16,9 @@ export default function HomePage() {
 
       {/* Hero */}
       <RobotHero />
+
+      {/* What makes us stand out + client logos */}
+      <StandOut />
       <span id="main-content" className="block" aria-hidden="true" />
 
       {/* Stats */}
@@ -90,9 +93,6 @@ export default function HomePage() {
 
       {/* Photo strip */}
       <PhotoStrip />
-
-      {/* Clients */}
-      <ClientsBand />
 
       {/* Training events */}
       <EventsSection />

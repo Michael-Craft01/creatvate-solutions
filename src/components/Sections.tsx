@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { clients, homeFaqs, processSteps, services, siteConfig, trainingEvents, type Service } from "@/lib/site";
+import { clientLogos, clients, homeFaqs, processSteps, services, siteConfig, trainingEvents, type Service } from "@/lib/site";
 import Icon from "./Icon";
 import Reveal from "./Reveal";
 
@@ -8,6 +8,75 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 function fmtDate(iso: string) {
   const [y, m, d] = iso.split("-").map(Number);
   return `${d} ${MONTHS[m - 1]} ${y}`;
+}
+
+const standOutPoints = [
+  { icon: "check" as const, title: "Pay when work starts", text: "Project-based billing. Nothing is charged before your project begins." },
+  { icon: "chat" as const, title: "Replies within 24h", text: "Message us on WhatsApp and a real person answers, fast." },
+  { icon: "spark" as const, title: "Four pillars, one team", text: "Growth, automation, software and training under one roof." },
+  { icon: "strategy" as const, title: "We learn you first", text: "Every solution starts with how your business really works." },
+];
+
+export function StandOut() {
+  // Four copies: the track scrolls by half its width, so each half must be wider than the screen.
+  const track = [...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos];
+  return (
+    <section className="px-4 pb-6 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-navy-950 px-6 py-10 text-white sm:px-10 md:py-12">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-500/25 blur-[90px]" aria-hidden="true" />
+        <div className="pointer-events-none absolute -bottom-32 left-10 h-64 w-64 rounded-full bg-brand-400/10 blur-[90px]" aria-hidden="true" />
+
+        <div className="relative grid gap-8 lg:grid-cols-[0.8fr_2fr] lg:items-center">
+          <Reveal>
+            <p className="eyebrow text-brand-400!">What makes us stand out</p>
+            <h2 className="mt-3 text-2xl font-bold text-white! md:text-3xl">
+              Built different, <span className="text-brand-500">on purpose.</span>
+            </h2>
+          </Reveal>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {standOutPoints.map((p, i) => (
+              <Reveal
+                as="li"
+                key={p.title}
+                delay={i * 90}
+                className="group rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-colors duration-300 hover:border-brand-500/60 hover:bg-white/[0.07]"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500 text-navy-950 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+                  <Icon name={p.icon} className="h-4 w-4" />
+                </span>
+                <p className="mt-3 text-sm font-bold text-white">{p.title}</p>
+                <p className="mt-1 text-xs leading-relaxed text-stone-400">{p.text}</p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+
+        <div className="relative mt-10 border-t border-white/10 pt-8">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Brands we&apos;ve worked with</p>
+          <div className="marquee relative mt-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <ul className="marquee-track flex w-max gap-4">
+              {track.map((logo, i) => (
+                <li
+                  key={i}
+                  aria-hidden={i >= clientLogos.length}
+                  className="flex h-20 w-44 shrink-0 items-center justify-center rounded-2xl bg-white px-5 py-3 transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={i < clientLogos.length ? logo.name : ""}
+                    width={logo.width}
+                    height={logo.height}
+                    sizes="160px"
+                    className="h-auto max-h-full w-auto max-w-full object-contain"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function ClientsBand() {
